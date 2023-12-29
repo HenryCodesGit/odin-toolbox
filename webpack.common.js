@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     index: "./src/js/index.js",
-
+    dropdown: "./src/js/dropdown.js",
     /*
     NTS: If multiple entry points import from a third shared entry point,
       look up code-splitting on webpack
@@ -43,7 +43,14 @@ module.exports = {
       filename: "index.html",
       inject: "head",
       scriptLoading: "defer",
-      //  chunks: ['index'] /* Uncomment if needed and making multiple pages*/
+      chunks: ["index"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/html/dropdown.html",
+      filename: "dropdown.html",
+      inject: "head",
+      scriptLoading: "defer",
+      chunks: ["dropdown"],
     }),
     //  Add more down here if needed
   ],
